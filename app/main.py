@@ -6,7 +6,7 @@ from app.routers import auth, users
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # create tables once at startup
+    # Create tables at startup
     create_db_and_tables()
     yield
 
@@ -16,6 +16,6 @@ app = FastAPI(title="fastapi-starter (auth+db)", lifespan=lifespan)
 def health():
     return {"status": "ok"}
 
-# routers
+# Routers
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
 app.include_router(users.router, prefix="/v1", tags=["v1"])
