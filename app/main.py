@@ -1,15 +1,16 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI
+from app.db import create_db_and_tables
+from app.routers import auth, users
 
-app = FastAPI(title="fastapi-starter")
+app = FastAPI(title="fastapi-starter (auth+db)")
 
-router = APIRouter(prefix="/v1", tags=["v1"])
-
-@router.get("/echo")
-def echo(msg: str):
-    return {"echo": msg}
+@app.on_event("startup")
+def on_startup():
+    create_db_and_tables()
 
 @app.get("/health")
 def health():
     return {"status": "ok"}
 
-app.include_router(router)
+app.include_router(auth.router, prefix="/auth", tags=["auth"])
+app.include_router(users.router, prefix="/v1", tags=["v1"])
