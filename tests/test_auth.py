@@ -6,7 +6,7 @@ def test_register_login_me_flow():
     password = "strongpass123"
 
     with TestClient(app) as client:
-        # register (allow 400 if already exists on re-run)
+        # register (allow 400 if re-run)
         r = client.post("/auth/register", json={"email": email, "password": password})
         assert r.status_code in (200, 400)
 
