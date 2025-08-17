@@ -15,6 +15,12 @@ app = FastAPI(title="fastapi-starter (auth+db)", lifespan=lifespan)
 @app.get("/health")
 def health():
     return {"status": "ok"}
+from fastapi.responses import RedirectResponse
+
+@app.get("/", include_in_schema=False)
+def root():
+    # send people to interactive docs
+    return RedirectResponse(url="/docs")
 
 # Routers
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
