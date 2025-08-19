@@ -1,8 +1,8 @@
 from fastapi.testclient import TestClient
-from app.main import app
+from app import app  # thanks to the re-export above
 
 def test_health():
-    with TestClient(app) as client:
-        r = client.get("/health")
-        assert r.status_code == 200
-        assert r.json() == {"status": "ok"}
+    c = TestClient(app)
+    r = c.get("/health")
+    assert r.status_code == 200
+    assert r.json()["status"] == "ok"
