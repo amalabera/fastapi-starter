@@ -64,3 +64,4 @@ DATABASE_URL (optional) — defaults to sqlite:///./app.db
 Token header: Authorization: Bearer <access_token>
 Default expiry: 60 minutes (see ACCESS_TOKEN_EXPIRE_MINUTES in app/security.py)
 "Small copy edit." 
+"Status: PR #2 merged." 
