@@ -1,6 +1,10 @@
+ docs/coauthor
 
 **`tests/test_health.py`**
 ```python
+
+ docs/readme-badge
+ main
 from fastapi.testclient import TestClient
 from app import app
 
@@ -8,4 +12,20 @@ def test_health():
     c = TestClient(app)
     r = c.get("/health")
     assert r.status_code == 200
+docs/coauthor
     assert r.json() == {"status": "ok"}
+
+
+fastapi==0.111.0
+uvicorn[standard]==0.30.0
+pydantic>=2.8,<3
+sqlmodel==0.0.22
+python-jose==3.3.0
+passlib[bcrypt]==1.7.4
+pytest==8.1.1
+httpx==0.27.0
+requests==2.32.3
+python-multipart==0.0.9
+bcrypt==3.2.2
+ main
+ main
