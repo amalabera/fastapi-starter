@@ -1,3 +1,12 @@
+ docs/readme-badge
+from fastapi.testclient import TestClient
+from app import app
+
+def test_health():
+    c = TestClient(app)
+    r = c.get("/health")
+    assert r.status_code == 200
+
 fastapi==0.111.0
 uvicorn[standard]==0.30.0
 pydantic>=2.8,<3
@@ -9,3 +18,4 @@ httpx==0.27.0
 requests==2.32.3
 python-multipart==0.0.9
 bcrypt==3.2.2
+ main
