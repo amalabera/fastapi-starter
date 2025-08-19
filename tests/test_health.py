@@ -1,5 +1,5 @@
-from app import app
 from fastapi.testclient import TestClient
+from app import app  # thanks to the re-export above
 
 def test_health():
     c = TestClient(app)
